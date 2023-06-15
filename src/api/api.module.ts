@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ApiController } from './api.controller';
-import { TweetsModule } from 'src/module/tweets/tweets.module';
+import { TweetsModule } from '../tweets/tweets.module';
 import { ApiResolver } from './api.resolver';
-import { TweetResolver } from 'src/tweet.resolver';
+import { TweetResolver } from '../tweet.resolver';
 
 @Module({
   imports: [TweetsModule],

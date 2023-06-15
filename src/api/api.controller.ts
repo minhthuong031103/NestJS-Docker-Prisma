@@ -1,17 +1,20 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { TweetService } from 'src/module/tweets/tweets.service';
+import { TweetService } from '../tweets/tweets.service';
 
 @Controller('api')
 export class ApiController {
   constructor(private tweetService: TweetService) {}
 
   @Post('tweet/create')
-  async createTweet(@Body() data: { content: string; userId: string }) {
-    const { content, userId } = data;
-    console.log(content, userId);
+  async createTweet(
+    @Body() data: { content: string; userId: string; title: string },
+  ) {
+    const { content, userId, title } = data;
+
     return this.tweetService.createTweet({
       content: content,
       userId: Number(userId),
+      title: title,
     });
   }
 

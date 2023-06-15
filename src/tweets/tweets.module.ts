@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TweetsRepository } from './tweets.respository';
-import { PrismaModule } from 'prisma/prisma.module';
+import { PrismaModule } from '../../prisma/prisma.module';
 import { TweetService } from './tweets.service';
 
 @Module({

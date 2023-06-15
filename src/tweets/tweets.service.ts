@@ -6,10 +6,15 @@ import { Tweet, User } from '@prisma/client';
 export class TweetService {
   constructor(private tweetRepository: TweetsRepository) {}
 
-  async createTweet(params: { content: Tweet[`content`]; userId: User[`id`] }) {
-    const { content, userId } = params;
+  async createTweet(params: {
+    content: Tweet[`content`];
+    userId: User[`id`];
+    title: Tweet[`title`];
+  }) {
+    const { content, userId, title } = params;
     const tweet = await this.tweetRepository.createTweet({
       data: {
+        title,
         content,
         user: {
           connect: {

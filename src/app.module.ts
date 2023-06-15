@@ -1,10 +1,15 @@
 import { Module } from '@nestjs/common';
-import { TweetsModule } from './module/tweets/tweets.module';
+import { TweetsModule } from './tweets/tweets.module';
 import { ApiModule } from './api/api.module';
-import { PrismaModule } from 'prisma/prisma.module';
+
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { TweetResolver } from './tweet.resolver';
+import { AuthModule } from './auth/auth.module';
+
+import { UserModule } from './user/user.module';
+import { NoteModule } from './note/note.module';
+
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -14,7 +19,12 @@ import { TweetResolver } from './tweet.resolver';
     }),
     TweetsModule,
     ApiModule,
-    PrismaModule,
+
+    AuthModule,
+
+    UserModule,
+
+    NoteModule,
   ],
   controllers: [],
   providers: [TweetResolver],
